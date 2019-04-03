@@ -191,6 +191,10 @@ class Provider(BaseProvider):
 
         joinedUrl = urlparse.urljoin(self.api_endpoint, url)
         print 'joinedUrl: ' + joinedUrl
+        print 'query_params: ' + json.dumps(query_params)
+        print 'data: ' + json.dumps(data)
+        print 'default_headers: ' + json.dumps(default_headers)
+        print 'default_auth: ' + json.dumps(default_auth)        
         response = requests.request(action, joinedUrl, params=query_params,
                                     data=json.dumps(data),
                                     headers=default_headers,
