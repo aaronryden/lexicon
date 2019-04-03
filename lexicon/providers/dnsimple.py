@@ -190,6 +190,7 @@ class Provider(BaseProvider):
             raise Exception('No valid authentication mechanism found')
 
         joinedUrl = urlparse.urljoin(self.api_endpoint, url)
+        print 'joinedUrl: ' + joinedUrl
         response = requests.request(action, joinedUrl, params=query_params,
                                     data=json.dumps(data),
                                     headers=default_headers,
