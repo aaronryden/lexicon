@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 import json
 import logging
+import urlparse
 
 import requests
 from lexicon.providers.base import Provider as BaseProvider
@@ -188,7 +189,8 @@ class Provider(BaseProvider):
         else:
             raise Exception('No valid authentication mechanism found')
 
-        response = requests.request(action, self.api_endpoint + url, params=query_params,
+        joinedUrl = urlparse.urljoin(self.api_endpoint, url)
+        response = requests.request(action, joinedUrl, params=query_params,
                                     data=json.dumps(data),
                                     headers=default_headers,
                                     auth=default_auth)
