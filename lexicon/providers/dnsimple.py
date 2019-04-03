@@ -194,8 +194,9 @@ class Provider(BaseProvider):
         print 'query_params: ' + json.dumps(query_params)
         print 'data: ' + json.dumps(data)
         print 'default_headers: ' + json.dumps(default_headers)
-        print 'default_auth: ' + json.dumps(default_auth)        
-        response = requests.request(action, joinedUrl, params=query_params,
+        print 'default_auth: ' + json.dumps(default_auth)
+        print 'combinedUrl ' + self.api_endpoint + '/' + url
+        response = requests.request(action, self.api_endpoint + '/' + url, params=query_params,
                                     data=json.dumps(data),
                                     headers=default_headers,
                                     auth=default_auth)
